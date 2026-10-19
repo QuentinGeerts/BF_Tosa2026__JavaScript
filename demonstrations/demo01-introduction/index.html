@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- CSS: Préférée -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- CSS: OK -->
+    <style>
+      /* CSS only */
+      h1 {
+        color: darkcyan;
+      }
+    </style>
+
+    <!-- JS: Préférée -->
+    <script src="js/script.js" defer></script>
+
+  </head>
+  <body>
+    <h1 style="color: green">Javascript - Introduction</h1>
+
+    <!-- CSS: Directement sur l'élément: Évite -->
+    <p style="color: red; text-transform: capitalize">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam assumenda
+      illo iusto facilis officiis architecto aliquid impedit est praesentium,
+      explicabo, repellendus, ducimus voluptatem eveniet nostrum ut dignissimos.
+      Nemo, ratione iste.
+    </p>
+
+    <p style="color: red; text-transform: capitalize" id="text2">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit
+      accusantium saepe recusandae dolores! Qui rem est, quae nisi excepturi
+      eligendi suscipit magni, amet accusantium impedit porro sunt ut
+      reprehenderit. Debitis!
+    </p>
+
+    <!-- JS: Directement sur l'élément KO -->
+    <button onclick="alert('Tu as cliqué sur moi')">Clique sur moi</button>
+
+    <button id="btn2">Clique sur moi 2</button>
+
+    <button id="btn3">Clique sur moi 3</button>
+
+    <!-- JS: dans une balise script (placée après les éléments HTML) -->
+    <script>
+      const btn2 = document.getElementById("btn2");
+      console.log("btn2:", btn2);
+    </script>
+  </body>
+</html>
