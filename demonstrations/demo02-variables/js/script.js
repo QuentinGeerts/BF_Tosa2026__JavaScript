@@ -97,3 +97,32 @@ console.log("monNull:", typeof monNull);
 
 const MA_CONSTANTE = 42;
 // MA_CONSTANTE = 4.2; // Provoque une erreur
+
+
+// 1.6. Différence entre var et let/const
+// Avant 2015:
+// var (GLOBAL): mot-clef qui permet de déclarer un emplacement en mémoire
+// Après 2015 (ECMAScript 6 / 2015):
+// let / const (LOCAL)
+
+var maVariable1 = "Hello";
+var maVariable1 = "World !"; // Redéclaration POSSIBLE avec var
+
+let maVariable2 = "Hello";
+// let maVariable2 = "World !"; // Redéclaration IMPOSSIBLE avec let
+
+console.log('maVariable1 :>> ', maVariable1);
+
+if (true) {
+  // sous bloc
+  let maVariable2 = "World !";
+  maVariable2 = "Coucou";
+  console.log('maVariable2 :>> ', maVariable2); // World !
+}
+
+if (true) {
+  // sous bloc
+  maVariable2 = "Hey";
+}
+
+console.log('maVariable2 :>> ', maVariable2); // Hello
