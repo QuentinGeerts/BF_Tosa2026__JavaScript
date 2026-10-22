@@ -55,3 +55,25 @@ Attention : testez avec un prix de 10 et une quantité de 3, puis remplacez la m
 - Ajouter un bouton "Effacer" qui vide la carte de visite
 
 --- 
+
+
+## 3. Les opérateurs
+
+### Partie A : Année bissextile
+
+Créer un site qui demande à l'utilisateur d'entrée une année.
+Le site devra déterminer s'il s'agit d'une année bissextile ou non.
+
+Créer les éléments suivants :
+- un `input` de type number
+- un bouton "Calculer"
+- une `div` avec comme id "resultat" avec comme valeur :
+   - "L'année 2000 est une année bissextile"
+   - "L'année 1998 n'est pas une année bissextile"
+
+Rappel: 
+- Une année est bissextile si elle est divisible par 4 mais pas par 100.
+- Ou s'il est divisible par 400.
+
+Bissextile : 2000, 2024
+Non bissextile: 1998, 1700
