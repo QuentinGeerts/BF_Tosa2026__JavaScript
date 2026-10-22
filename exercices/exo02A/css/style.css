@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container input {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.container button#btn {
+  width: 150px
+}

@@ -66,7 +66,7 @@ a = "Quentin"; // type: string
 
 // 1.4.  Types de données
 
-// - string : chaîne de caractères → guillemets / appostrophe / backtick
+// - string : chaîne de caractères → guillemets / apostrophe / backtick
 // - number : entier et réel (décimal est un point (.))
 // - boolean : true / false
 // - undefined : donné à la création sans initialisation
