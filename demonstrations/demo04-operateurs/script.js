@@ -175,7 +175,7 @@ console.log('f :>> ', f);
 // a. Affecter la valeur
 // b. Décrémenter la valeur
 
-let g = c--; // c: 5 | f: 6
+let g = c--; // c: 5 | g: 6
 console.log('c :>> ', c);
 console.log('g :>> ', g);
 
@@ -194,10 +194,10 @@ console.log(age >= 18 ? "Adulte" : "Enfant");
 let pseudo;
 
 pseudo = null ?? "Anonyme";
-console.log('pseudo :>> ', pseudo);
+console.log('pseudo :>> ', pseudo); // Anonyme
 
 pseudo = "Oyumiro" ?? "Anonyme";
-console.log('pseudo :>> ', pseudo);
+console.log('pseudo :>> ', pseudo); // Oyumiro
 
 pseudo = pseudo ?? "Inconnu";
 pseudo ??= "Inconnu"; // Permet de donner une valeur par défaut si pas établi

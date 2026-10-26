@@ -74,8 +74,7 @@ let jour = "jeudi";
 if (jour == "lundi") console.log("Sandwich 1");
 else if (jour == "mardi") console.log("Sandwich 2");
 else if (jour == "mercredi") console.log("Sandwich 3");
-else if (jour == "jeudi")
-  console.log("Sandwich 4"); // s'arrête là
+else if (jour == "jeudi")  console.log("Sandwich 4"); // s'arrête là
 else if (jour == "vendredi") console.log("Sandwich 5");
 else if (jour == "samedi") console.log("Sandwich 6");
 else console.log("Sandwich 7");
@@ -268,6 +267,18 @@ for (const letter of word) {
 
 tab1.forEach((element, index, tableau) => {
   console.log(element, index, tableau);
+});
+
+tab1.forEach((element) => {
+  console.log(element);
+});
+
+tab1.forEach((element, index) => {
+  console.log(element, index);
+});
+
+tab1.forEach((_, index) => {
+  console.log(index);
 });
 
 
