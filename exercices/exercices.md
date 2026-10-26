@@ -77,3 +77,111 @@ Rappel:
 
 Bissextile : 2000, 2024
 Non bissextile: 1998, 1700
+
+--- 
+
+## 4. Les fonctions
+
+Un dossier par partie : `exo04A`, `exo04B`... avec un `index.html` et un `js/script.js`.
+Pour les parties A à C, les résultats s'affichent dans la console.
+
+### Partie A : Mes premières fonctions
+
+Écrire et tester (au moins 2 appels chacune) les fonctions suivantes :
+
+- `estPair(nombre)` : retourne `true` si le nombre est pair, `false` sinon
+- `maximum(a, b)` : retourne le plus grand des deux nombres
+- `celsiusVersFahrenheit(celsius)` : retourne la température en Fahrenheit (formule : `celsius * 9 / 5 + 32`)
+- `prixTTC(prixHT, taux = 0.21)` : retourne le prix TVA comprise. Si le taux n'est pas donné, on utilise 21 %
+
+```js
+console.log(prixTTC(100));     // 121
+console.log(prixTTC(100, 0.06));  // 106
+```
+
+### Partie B : Fonctions et boucles
+
+- `compterVoyelles(texte)` : retourne le nombre de voyelles (a, e, i, o, u, y) dans le texte
+- `inverser(texte)` : retourne le texte à l'envers (`"Bonjour"` → `"ruojnoB"`)
+- `moyenne(...notes)` : retourne la moyenne de toutes les notes reçues, peu importe leur nombre
+- `mention(note)` : retourne la mention avec un `switch` ou des `if` :
+  - moins de 10 : "Échec"
+  - de 10 à 13 : "Satisfaction"
+  - de 14 à 16 : "Distinction"
+  - 17 et plus : "Grande distinction"
+
+```js
+console.log(moyenne(12, 15, 18));       // 15
+console.log(mention(moyenne(12, 15, 18))); // "Distinction"
+```
+
+Documenter chaque fonction avec un commentaire `/** ... */` (description, `@param`, `@returns`).
+
+### Partie C : Les callbacks
+
+Copier ce tableau dans votre script :
+
+```js
+const produits = [
+  { nom: "Clavier", prix: 79.9, categorie: "informatique", stock: 12 },
+  { nom: "Souris", prix: 29.99, categorie: "informatique", stock: 0 },
+  { nom: "Chaise", prix: 149, categorie: "mobilier", stock: 4 },
+  { nom: "Lampe", prix: 35.5, categorie: "mobilier", stock: 0 },
+  { nom: "Casque", prix: 99, categorie: "audio", stock: 7 },
+  { nom: "Enceinte", prix: 59.9, categorie: "audio", stock: 2 },
+];
+```
+
+1. Écrire une fonction `filtrer(tableau, conditionFn)` qui retourne un nouveau tableau avec uniquement les éléments pour lesquels `conditionFn` retourne `true`
+2. L'utiliser pour obtenir :
+   - les produits en stock
+   - les produits à moins de 50 €
+   - les produits de la catégorie "audio"
+   - les produits en stock ET à moins de 100 €
+
+   Utiliser au moins une fois une fonction nommée, une fonction anonyme et une fonction fléchée comme callback.
+
+3. Écrire une fonction `compter(tableau, conditionFn)` qui retourne le **nombre** d'éléments qui respectent la condition, et l'utiliser pour compter les produits en rupture de stock.
+
+### Partie D : La calculatrice (DOM)
+
+Créer une page avec :
+- deux champs `number` (nombre 1 et nombre 2)
+- 4 boutons : `+`, `-`, `×`, `÷`
+- une `div` avec l'id `resultat`
+
+Contraintes :
+- Une fonction par opération (`addition`, `soustraction`, `multiplication`, `division`)
+- Une seule fonction `calculer(operationFn)` qui :
+  1. récupère les deux valeurs et les convertit en nombres
+  2. appelle `operationFn` avec ces deux valeurs
+  3. affiche le résultat dans la `div`
+- Chaque bouton appelle `calculer` en lui donnant la bonne fonction :
+
+```js
+btnAddition.onclick = () => calculer(addition);
+```
+
+- La fonction `division` lance une erreur (`throw`) si le deuxième nombre vaut 0. Dans `calculer`, l'erreur est attrapée (`try...catch`) et le message d'erreur s'affiche dans la `div` à la place du résultat.
+
+### Partie E : Le catalogue (DOM + callbacks)
+
+Reprendre le tableau `produits` de la partie C.
+
+Créer une page avec :
+- 3 boutons : "En stock", "Moins de 50 €", "Audio"
+- une `div` avec l'id `catalogue`
+- un paragraphe avec l'id `compteur`
+
+Au clic sur un bouton :
+- la `div` affiche les noms et les prix des produits correspondants, sous la forme : `Clavier (79.90 €) - Chaise (149.00 €) - ...`
+- le paragraphe affiche : `3 produit(s) trouvé(s)`
+
+Contraintes :
+- Réutiliser votre fonction `filtrer` de la partie C
+- Écrire une fonction `afficherProduits(liste)` qui s'occupe de l'affichage, et l'appeler depuis chaque bouton
+
+### Bonus
+
+- Ajouter un champ texte et un bouton "Rechercher" : le catalogue affiche les produits dont le nom contient le texte saisi, sans tenir compte des majuscules (`toLowerCase()`, `includes()`)
+- Ajouter un champ "Prix maximum" : le bouton "Filtrer" affiche les produits dont le prix est inférieur ou égal à la valeur saisie
