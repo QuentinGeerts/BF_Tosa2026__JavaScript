@@ -185,3 +185,159 @@ Contraintes :
 
 - Ajouter un champ texte et un bouton "Rechercher" : le catalogue affiche les produits dont le nom contient le texte saisi, sans tenir compte des majuscules (`toLowerCase()`, `includes()`)
 - Ajouter un champ "Prix maximum" : le bouton "Filtrer" affiche les produits dont le prix est inférieur ou égal à la valeur saisie
+
+
+--- 
+
+# Les tableaux
+
+## Partie 1 - Déclarer, lire et modifier un tableau
+ 
+### Exercice 1 - Mon premier tableau
+ 
+1. Déclare un tableau `couleurs` contenant 4 couleurs de ton choix.
+2. Affiche le tableau complet dans la console.
+3. Affiche la **première** couleur, puis la **troisième**.
+Résultat attendu (exemple) :
+ 
+```text
+["rouge", "vert", "bleu", "jaune"]
+rouge
+bleu
+```
+ 
+### Exercice 2 - Combien d'éléments ?
+ 
+1. Déclare un tableau `jours` contenant les 7 jours de la semaine.
+2. Affiche le nombre de jours grâce à la propriété `length`.
+3. Affiche la phrase : `La semaine compte 7 jours.` en utilisant `length` (et non le chiffre 7 écrit à la main).
+### Exercice 3 - Le dernier élément
+ 
+On donne le tableau :
+ 
+```javascript
+let animaux = ["chat", "chien", "lapin", "tortue", "hamster"];
+```
+ 
+1. Affiche le dernier animal en écrivant directement son indice.
+2. Affiche à nouveau le dernier animal, mais cette fois **avec `length`**, pour que ton code fonctionne quelle que soit la taille du tableau.
+> Indice : si un tableau a 5 éléments, quel est l'indice du dernier ?
+ 
+### Exercice 4 - Changer une valeur
+ 
+On donne le tableau :
+ 
+```javascript
+let notes = [12, 8, 15, 10];
+```
+ 
+1. Le professeur s'est trompé : la 2e note n'est pas 8 mais 14. Corrige-la.
+2. Remplace la dernière note par 18.
+3. Affiche le tableau final.
+Résultat attendu :
+ 
+```text
+[12, 14, 15, 18]
+```
+ 
+### Exercice 5 - Remplir un tableau vide
+ 
+1. Déclare un tableau vide `courses`.
+2. Ajoute 3 articles en affectant directement les indices 0, 1 et 2.
+3. Ajoute un 4e article à la position `courses.length`.
+4. Affiche le tableau et sa longueur.
+Résultat attendu (exemple) :
+ 
+```text
+["pain", "lait", "oeufs", "beurre"]
+4
+```
+ 
+---
+ 
+## Partie 2 - Parcourir un tableau avec une boucle
+ 
+### Exercice 6 - Afficher avec une boucle
+ 
+On donne le tableau :
+ 
+```javascript
+let prenoms = ["Léa", "Tom", "Sarah", "Nabil", "Emma"];
+```
+ 
+1. Avec une boucle `for`, affiche chaque prénom sur une ligne.
+2. Modifie ta boucle pour afficher aussi la position (en commençant à 1 pour l'humain).
+Résultat attendu pour la question 2 :
+ 
+```text
+1 : Léa
+2 : Tom
+3 : Sarah
+4 : Nabil
+5 : Emma
+```
+ 
+### Exercice 7 - La somme et la moyenne
+ 
+On donne le tableau :
+ 
+```javascript
+let temperatures = [14, 17, 21, 19, 16, 22, 18];
+```
+ 
+1. Calcule la **somme** de toutes les températures avec une boucle.
+2. Calcule la **moyenne** (somme / nombre d'éléments, avec `length`).
+3. Affiche : `Température moyenne de la semaine : 18.14 °C` (la console affichera en réalité 18.142857142857142 : c'est normal, on n'arrondit pas encore).
+### Exercice 8 - Le plus grand nombre
+ 
+On donne le tableau :
+ 
+```javascript
+let scores = [45, 78, 12, 93, 61, 87];
+```
+ 
+1. Trouve le **plus grand** score à l'aide d'une boucle, sans méthode toute faite.
+2. Affiche-le.
+3. Bonus : affiche aussi son **indice** dans le tableau.
+> Indice : commence par supposer que le premier élément est le plus grand, puis compare-le aux autres.
+ 
+### Exercice 9 - Compter et filtrer
+ 
+On donne le tableau des âges d'un groupe :
+ 
+```javascript
+let ages = [12, 25, 17, 34, 8, 19, 15, 42];
+```
+ 
+1. Compte combien de personnes sont **majeures** (18 ans ou plus) et affiche ce nombre.
+2. Crée un nouveau tableau vide `mineurs`, puis remplis-le avec les âges inférieurs à 18 (utilise `mineurs[mineurs.length] = ...`).
+3. Affiche le tableau `mineurs`.
+Résultat attendu :
+ 
+```text
+Nombre de majeurs : 4
+[12, 17, 8, 15]
+```
+ 
+---
+ 
+## Partie 3 - Bonus : les tableaux associatifs
+ 
+En JavaScript, un "tableau associatif" s'écrit avec un **objet** : on range les valeurs sous des **clés** (des noms) au lieu d'indices numérotés.
+ 
+### Exercice 10 - La fiche d'un élève
+ 
+1. Crée un tableau associatif `eleve` avec les clés `prenom`, `age` et `classe`.
+2. Affiche le prénom de l'élève de deux façons : `eleve.prenom` et `eleve["prenom"]`.
+3. L'élève a eu son anniversaire : augmente son âge de 1.
+4. Ajoute une nouvelle clé `ville`.
+5. Avec une boucle `for...in`, affiche chaque clé et sa valeur.
+Résultat attendu (exemple) :
+ 
+```text
+prenom : Léa
+age : 15
+classe : 3B
+ville : Liège
+```
+ 
