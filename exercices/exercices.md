@@ -341,3 +341,75 @@ classe : 3B
 ville : Liège
 ```
  
+
+---
+
+# Les événements - Exercice récapitulatif : Mon équipe Pokémon
+
+Créer un dossier `exo-evenements` avec `index.html`, `css/style.css` et `js/script.js`.
+
+Copie ce tableau dans ton script :
+
+```javascript
+const pokemons = [
+  { nom: "Pikachu", type: "électrique", niveau: 45 },
+  { nom: "Bulbizarre", type: "plante", niveau: 12 },
+  { nom: "Salamèche", type: "feu", niveau: 18 },
+  { nom: "Carapuce", type: "eau", niveau: 15 },
+  { nom: "Rondoudou", type: "normal", niveau: 22 },
+  { nom: "Évoli", type: "normal", niveau: 30 },
+  { nom: "Ronflex", type: "normal", niveau: 52 },
+  { nom: "Dracaufeu", type: "feu", niveau: 68 },
+  { nom: "Mewtwo", type: "psy", niveau: 70 },
+  { nom: "Psykokwak", type: "eau", niveau: 27 },
+];
+```
+
+Dans le HTML, il n'y a que :
+- un champ texte `recherche`
+- une `div` vide `pokedex`
+- un titre `Mon équipe (0 / 6)` et une liste vide `equipe`
+
+Tout le reste est créé en JavaScript.
+
+## Partie 1 - Afficher le Pokédex
+
+1. Écris une fonction `afficherPokedex(liste)` qui vide la `div` `pokedex`, puis crée une carte (`div` avec la classe `carte`) pour chaque Pokémon de la liste.
+2. Chaque carte affiche le nom et le type du Pokémon.
+3. Appelle cette fonction au chargement de la page avec le tableau complet.
+
+Résultat attendu (une carte) :
+
+```text
+Pikachu
+électrique
+```
+
+## Partie 2 - Les événements de la souris
+
+1. Au **survol** d'une carte (`mouseenter`), le niveau s'affiche dans la carte : `Niv. 45`. Quand la souris sort (`mouseleave`), le niveau disparaît.
+2. Au **clic** sur une carte, le Pokémon est ajouté à l'équipe : un `li` avec son nom est créé dans la liste `equipe`.
+3. Au **double-clic** sur un Pokémon de l'équipe, il est retiré de l'équipe.
+
+## Partie 3 - Les règles de l'équipe
+
+1. Le titre se met à jour à chaque ajout ou retrait : `Mon équipe (3 / 6)`.
+2. L'équipe ne peut pas dépasser 6 Pokémon. Si elle est pleine, le clic sur une carte ne fait rien.
+3. Un Pokémon déjà dans l'équipe ne peut pas être ajouté une deuxième fois. Sa carte reçoit la classe `choisi` (grisée), et la perd quand il est retiré de l'équipe.
+
+> Indice : garde un tableau `equipe` dans ton script, à côté de l'affichage. C'est lui qui te dit combien de Pokémon il y a et lesquels (`length`, `includes`).
+
+## Partie 4 - La recherche
+
+1. À chaque lettre tapée dans le champ `recherche` (événement `input`), le Pokédex n'affiche que les Pokémon dont le nom contient le texte saisi.
+2. La recherche ne tient pas compte des majuscules : `pika` trouve `Pikachu`.
+3. Si aucun Pokémon ne correspond, affiche `Aucun Pokémon trouvé` dans le Pokédex.
+
+> Indice : réutilise ta fonction `afficherPokedex` en lui donnant la liste filtrée.
+
+## Bonus
+
+- La touche **Échap** (`keydown`, `event.key === "Escape"`) vide le champ de recherche et réaffiche tout le Pokédex
+- Chaque type a sa couleur de bordure, grâce à une classe CSS par type (`feu`, `eau`, `plante`...)
+- Un bouton "Trier par niveau" réaffiche le Pokédex du plus fort au plus faible
+

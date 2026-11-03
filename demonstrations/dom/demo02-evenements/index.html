@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="form-product">
+
+      <label for="product-name">Nom:
+        <input type="text" name="product-name" id="product-name">
+      </label>
+      <label for="product-price">Prix:
+        <input type="text" name="product-price" id="product-price">
+      </label>
+      <label for="product-image">Url:
+        <input type="url" name="product-image" id="product-image">
+      </label>
+
+      <button id="btn-product-create">Créer</button>
+
+    </div>
+
+    <h1>Catalogue: <input type="text" id="search" placeholder="Nom du produit..."></h1>
+
+    <div id="catalogue"></div>
+
+  </body>
+</html>
