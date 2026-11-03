@@ -1,0 +1,15 @@
+#p {
+  border: 1px solid gray;
+}
+
+#p::after {
+  content: '🚀';
+}
+
+#p::before {
+  content: '🐈';
+}
+
+.title + p {
+  color: blue;
+}
