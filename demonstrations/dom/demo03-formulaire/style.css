@@ -1,0 +1,40 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#form-inscription > * {
+  display: block;
+  margin: 10px 0;
+}
+
+#form-inscription label:not(:has(input[type="radio"])){
+  margin-bottom: 40px;
+}
+
+.erreur {
+  color: crimson;
+  font-size: 0.9rem;
+  display: block;
+}
+
+
+
+.invalide {
+  border: 1px solid crimson;
+}
+
+.valide {
+  border: 1px solid seagreen;
+}
+
+#inscrits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.inscrit {
+  box-shadow: 0 0 3px gray;
+  width: 200px;
+  padding: 10px;
+}

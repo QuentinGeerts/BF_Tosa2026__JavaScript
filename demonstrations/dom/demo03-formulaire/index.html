@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Démonstration sur les formulaires</h1>
+
+    <!-- 
+      novalidate: permet de désactiver la validation du navigateur pour faire la nôtre en javascript 
+    -->
+    <form id="form-inscription" novalidate>
+      <label for="pseudo">
+        Pseudo:
+        <input type="text" name="pseudo-nyme" id="pseudo" />
+        <span class="erreur" id="erreur-pseudo"></span>
+      </label>
+
+      <label for="email">
+        Email:
+        <input type="email" name="email" id="email" />
+        <span class="erreur" id="erreur-email"></span>
+      </label>
+
+      <label for="age">
+        Age:
+        <input type="number" name="age" id="age" />
+        <span class="erreur" id="erreur-age"></span>
+      </label>
+
+      <label for="password">
+        Mot de passe:
+        <input type="password" name="password" id="password" />
+        <span class="erreur" id="erreur-password"></span>
+      </label>
+
+      <p>Niveau:</p>
+      <label for="debutant">
+        <input
+          type="radio"
+          name="niveau"
+          id="debutant"
+          value="debutant"
+          checked
+        />
+        Débutant
+      </label>
+      <label for="avance">
+        <input type="radio" name="niveau" id="avance" value="avance" checked />
+        Avancé
+      </label>
+
+      <label for="formation">
+        Formation:
+        <select name="formation" id="formation">
+          <option value="">--- Choicir ---</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="js">Javascript</option>
+        </select>
+      </label>
+
+      <label for="newsletter">
+        <input type="checkbox" name="newsletter" id="newsletter" />
+        Recevoir la newsletter
+      </label>
+
+      <label for="message">
+        Message:
+        <textarea
+          name="message"
+          id="message"
+          rows="4"
+          maxlength="100"
+        ></textarea>
+        <span id="compteur-message">0 / 100</span>
+      </label>
+
+      <div>
+        <button type="submit">S'inscrire</button>
+        <button type="reset">Réinitialiser</button>
+      </div>
+    </form>
+
+    <h2>Inscrits</h2>
+    <div id="inscrits"></div>
+  </body>
+</html>
