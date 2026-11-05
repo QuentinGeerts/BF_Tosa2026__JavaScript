@@ -38,3 +38,7 @@ body {
   width: 200px;
   padding: 10px;
 }
+
+#show-password-btn {
+  border: 1px solid gray;
+}

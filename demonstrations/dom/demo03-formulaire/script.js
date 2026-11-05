@@ -16,6 +16,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const newsletter = document.getElementById("newsletter");
   const message = document.getElementById("message");
 
+  const erreurMinuscule = document.getElementById("erreur-password-minuscule");
+  const erreurMajuscule = document.getElementById("erreur-password-majuscule");
+  const erreurChiffre = document.getElementById("erreur-password-chiffre");
+  const erreurCaractere = document.getElementById("erreur-password-caractere");
+
+  const showPasswordBtn = document.getElementById("show-password-btn");
+
   const inscrits = document.getElementById("inscrits");
 
   // 💡 Un formulaire donne aussi accès à ses champs grâce à leur "name"
@@ -37,8 +44,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const pseudoValide = validerPseudo();
     const emailValide = validerEmail();
     const ageValide = validerAge();
+    const passwordValide = validerPassword();
 
-    if(!pseudoValide || !emailValide || !ageValide) return; // garde fou
+    if(!pseudoValide || !emailValide || !ageValide || !passwordValide) return; // garde fou
 
     // Récupération des données
     const inscrit = recupererValeurs();
@@ -142,7 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
   // Le message d'erreur se trouve dans le span "erreur-[id du champ]"
-  function afficherErreur(champ, texte) {
+  function afficherErreur(champ, texte = "") {
     document.getElementById(`erreur-${champ.id}`).textContent = texte;
     champ.classList.add("invalide");
     champ.classList.remove("valide");
@@ -178,4 +186,112 @@ window.addEventListener("DOMContentLoaded", () => {
 
     return carte;
   }
+
+  // 5.  Validation "en direct"
+  // → blur : quand on quitte un champ 
+  // → input : à chaque caractère tapé
+  pseudo.addEventListener("blur", validerPseudo);
+
+  // Force du mot de passe
+  const forcePassword = document.getElementById("force-password");
+
+  password.addEventListener("input", () => {
+    const longueur = password.value.length;
+    
+    if (longueur == 0) forcePassword.textContent = "";
+    else if (longueur < 6) forcePassword.textContent = "Faible"
+    else if (longueur < 10) forcePassword.textContent = "Moyen"
+    else forcePassword.textContent = "Fort"
+    
+    validerPassword();
+  });
+
+  function validerPassword() {
+    const valeur = password.value;
+
+    if (!verifierRegex(valeur)) afficherErreur(password);
+    if (valeur === "") return afficherErreur(password, "Le mot de passe est requis.");
+
+    return afficherValide(password);
+  }
+
+  function verifierRegex(valeur) {
+    const minuscule = /[a-z]/g;
+    const majuscule = /[A-Z]/g;
+    const chiffre = /\d/g;
+    const caractere = /[^a-zA-Z0-9]/g;
+
+    let aMinuscule = minuscule.test(valeur);
+    let aMajuscule = majuscule.test(valeur);
+    let aChiffre = chiffre.test(valeur);
+    let aCaractere = caractere.test(valeur);
+
+    if (!aMajuscule) erreurMajuscule.textContent = "1 majuscule manquante";
+    else erreurMajuscule.textContent = "";
+
+    if (!aMinuscule) erreurMinuscule.textContent = "1 minuscule manquante";
+    else erreurMinuscule.textContent = "";
+
+    if (!aChiffre) erreurChiffre.textContent = "1 chiffre manquante";
+    else erreurChiffre.textContent = "";
+
+    if (!aCaractere) erreurCaractere.textContent = "1 caractere manquante";
+    else erreurCaractere.textContent = "";
+
+    if (!aMajuscule || !aMinuscule || !aChiffre || !aCaractere) return false;
+
+    return true;
+  }
+
+  // Longueur des caractères de message
+  const compteurMessage = document.getElementById("compteur-message");
+  message.addEventListener("input", () => {
+    compteurMessage.textContent = `${message.value.length} / 100`;
+  })
+
+
+  // 6.  L'événement "change"
+  // → se déclenche quand la valeur est validée (select, checkbox, radio)
+
+  formation.addEventListener("change", (e) => {
+    console.log('Formation choisie :>> ', e.target.value);
+    console.log('Formation choisie :>> ', formation.value);
+  });
+
+  newsletter.addEventListener("change", (e) => {
+    console.log('newsletter.checked :>> ', newsletter.checked);
+  });
+
+  // 7.  L'événement "reset"
+  formInscription.addEventListener("reset", () => {
+    retirerEtats();
+    compteurMessage.textContent = "0 / 100";
+    forcePassword.textContent = "";
+  });
+
+  function retirerEtats() {
+    for (const champ of [pseudo, email, age, password]) {
+      champ.classList.remove("valide", "invalide");
+      champ.nextElementSibling.textContent = "";
+    }
+
+    erreurMinuscule.textContent = "";
+    erreurMajuscule.textContent = "";
+    erreurChiffre.textContent = "";
+    erreurCaractere.textContent = "";
+  }
+
+  // 8.  Bouton afficher / cacher le mot de passe
+
+  showPasswordBtn.addEventListener("click", () => {
+    if (password.type === "text") {
+      password.type = "password";
+      showPasswordBtn.textContent = "🙈";
+    }
+    else {
+      password.type = "text";
+      showPasswordBtn.textContent = "🐵";
+    }
+  })
+
 });

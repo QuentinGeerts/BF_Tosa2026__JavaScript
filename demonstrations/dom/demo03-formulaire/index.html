@@ -33,9 +33,15 @@
       </label>
 
       <label for="password">
-        Mot de passe:
+        Mot de passe <span id="force-password"></span>:
+        <button id="show-password-btn" type="button">🙈</button>
         <input type="password" name="password" id="password" />
         <span class="erreur" id="erreur-password"></span>
+        
+        <span class="erreur" id="erreur-password-majuscule"></span>
+        <span class="erreur" id="erreur-password-minuscule"></span>
+        <span class="erreur" id="erreur-password-caractere"></span>
+        <span class="erreur" id="erreur-password-chiffre"></span>
       </label>
 
       <p>Niveau:</p>
