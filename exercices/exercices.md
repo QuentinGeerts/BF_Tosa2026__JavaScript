@@ -413,3 +413,90 @@ Pikachu
 - Chaque type a sa couleur de bordure, grâce à une classe CSS par type (`feu`, `eau`, `plante`...)
 - Un bouton "Trier par niveau" réaffiche le Pokédex du plus fort au plus faible
 
+---
+
+# Les formulaires - Exercice : La pizzeria "Da Mario"
+
+Créer un dossier `exo-formulaires` avec `index.html`, `css/style.css` et `js/script.js`.
+
+## Partie 1 - Le formulaire (HTML)
+
+Crée un formulaire `form-commande` (avec l'attribut `novalidate`) contenant :
+
+- **Nom** : champ texte
+- **Téléphone** : champ `tel`
+- **Taille** : 3 boutons radio (Small 8 €, Medium 10 €, Large 13 €), Medium coché par défaut
+- **Pizza** : liste déroulante (Margherita, Regina, 4 Fromages, Végétarienne) avec une première option vide "-- Choisir --"
+- **Suppléments** : 4 cases à cocher (Olives, Champignons, Jambon, Extra fromage) à 1,50 € chacun
+- **Quantité** : champ `number` (valeur par défaut : 1)
+- **Remarque** : `textarea` de 80 caractères maximum, avec un compteur `0 / 80`
+- Un paragraphe `prix-total` qui affiche `Total : 10.00 €`
+- Un bouton "Commander" (submit) et un bouton "Annuler" (reset)
+
+Sous le formulaire, ajoute un titre "Commandes" et une `div` vide `commandes`.
+
+> Indice : mets le prix dans l'attribut `value` des radios et des cases à cocher (`value="8"`, `value="1.5"`). Le JS n'aura plus qu'à le lire.
+
+## Partie 2 - Le prix en direct
+
+1. Écris une fonction `calculerTotal()` qui retourne le prix total : `(prix de la taille + prix des suppléments cochés) × quantité`.
+2. Le paragraphe `prix-total` se met à jour **à chaque modification** du formulaire (taille, supplément, quantité).
+3. Le prix s'affiche toujours avec 2 décimales.
+
+Résultat attendu (Large + Olives + Jambon, quantité 2) :
+
+```text
+Total : 32.00 €
+```
+
+> Indice : les suppléments cochés se récupèrent tous d'un coup avec `querySelectorAll("input[name='supplement']:checked")`. Et plutôt que d'écouter chaque champ, tu peux écouter l'événement `input` sur le `form` lui-même.
+
+## Partie 3 - La validation
+
+À l'envoi du formulaire (`submit`), la page ne doit **pas** se recharger. Chaque champ invalide affiche son message d'erreur en rouge sous le champ :
+
+| Champ | Règle | Message |
+|---|---|---|
+| Nom | obligatoire, au moins 2 caractères | "Le nom est obligatoire" / "Le nom est trop court" |
+| Téléphone | 10 chiffres, commence par 0 | "Le numéro doit contenir 10 chiffres et commencer par 0" |
+| Pizza | une pizza doit être choisie | "Choisis une pizza" |
+| Quantité | entre 1 et 10 | "La quantité doit être entre 1 et 10" |
+
+1. **Toutes** les erreurs s'affichent en même temps (pas seulement la première).
+2. Le nom et le téléphone sont aussi vérifiés quand on **quitte** le champ (`blur`).
+3. Un champ invalide a une bordure rouge, un champ valide une bordure verte (classes CSS).
+
+> Indice : pour vérifier que le téléphone ne contient que des chiffres : `isNaN(Number(valeur))`.
+
+## Partie 4 - La commande
+
+Si tout est valide :
+
+1. Récupère toutes les valeurs dans un objet `commande`. Les suppléments sont rangés dans un **tableau** de textes.
+2. Affiche la commande dans la `div` `commandes` sous forme de carte :
+
+```text
+Mario Rossi - 0470123456
+2 × Regina (Large)
+Suppléments : Olives, Jambon
+Remarque : sans oignons
+Total : 32.00 €
+```
+
+3. Si aucun supplément n'est coché, affiche `Suppléments : aucun`. Si la remarque est vide, n'affiche pas la ligne.
+4. Vide le formulaire et remets le curseur dans le champ Nom.
+
+## Partie 5 - Annuler
+
+Au clic sur "Annuler" (événement `reset`), en plus de vider les champs :
+- les messages d'erreur et les bordures disparaissent
+- le compteur de la remarque revient à `0 / 80`
+- le prix revient à `Total : 10.00 €`
+
+> Attention : au moment où l'événement `reset` se déclenche, les champs ne sont **pas encore** vidés. Teste et observe ce que vaut ton total.
+
+## Bonus
+
+- Une case "Livraison (+3 €)" : si elle est cochée, un champ "Adresse" apparaît (et devient obligatoire). Si elle est décochée, il disparaît.
+- Un compteur sous le titre : `3 commande(s) - 87.50 € au total`
+- Un bouton "Supprimer" sur chaque carte de commande, qui met aussi à jour le compteur du bonus précédent
